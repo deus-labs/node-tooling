@@ -1,7 +1,7 @@
 #!/bin/sh
 
 USERNAME=${1:-grafana}
-SCRIPT_PATH="$(dirname -- "$0")"
+SCRIPT_PATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 apt-get install -y apt-transport-https
 apt-get install -y software-properties-common wget
@@ -25,7 +25,7 @@ mv prometheus promtool /usr/local/bin/
 mv prometheus.yml /etc/prometheus/prometheus.yml
 mv consoles/ console_libraries/ /etc/prometheus/
 
-cat >>/etc/systemd/system/prometheus.service <<EOF
+cat >/etc/systemd/system/prometheus.service <<EOF
 [Unit]
 Description=Prometheus
 Documentation=https://prometheus.io/docs/introduction/overview/

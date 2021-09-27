@@ -2,7 +2,7 @@
 
 [ "$(id -u)" -ne 0 ] && echo "You must be root to run this script!" && exit 1
 
-SCRIPT_PATH="$(dirname -- "$0")"
+SCRIPT_PATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 set -a && . "$SCRIPT_PATH"/${1:-.env} && set +a
 
 install_packages() {
@@ -41,10 +41,11 @@ EOF
 
 create_user() {
     USERNAME=$1
+    IS_SUDOER=$2
     mkdir -p /home/"$USERNAME"/.ssh
     cp ~/.ssh/authorized_keys /home/"$USERNAME"/.ssh/authorized_keys
     useradd -s /bin/bash -d /home/"$USERNAME" "$USERNAME"
-    usermod -aG sudo "$USERNAME"
+    [ "$IS_SUDOER" = true ] && usermod -aG sudo "$USERNAME"
 
     chmod 700 /home/"$USERNAME"/.ssh
     chmod 644 /home/"$USERNAME"/.ssh/authorized_keys
@@ -77,9 +78,43 @@ EOF
     . /home/"$VALIDATOR_USER"/.profile
 }
 
+install_junod_systemd_service() {
+    . /home/"$VALIDATOR_USER"/.profile
+
+    cat > /etc/systemd/system/cosmovisor.service <<EOF
+[Unit]
+Description=cosmovisor
+After=network-online.target
+
+[Service]
+Type=simple
+User=$VALIDATOR_USER
+WorkingDirectory=/home/$VALIDATOR_USER
+ExecStart=/home/$VALIDATOR_USER/go/bin/cosmovisor start
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=65535
+Environment="DAEMON_NAME=junod"
+Environment="DAEMON_HOME=$DAEMON_HOME"
+Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
+Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+    systemctl daemon-reload
+    systemctl enable cosmovisor
+    systemctl start cosmovisor
+}
+
 init
-create_user "$VALIDATOR_USER"
+create_user "$VALIDATOR_USER" true
 install_go
-su "$VALIDATOR_USER" -c "$SCRIPT_PATH"/install-juno2.sh
+
+chmod ugo+x "$SCRIPT_PATH"/junod-setup.sh
+su "$VALIDATOR_USER" -c "$SCRIPT_PATH"/junod-setup.sh
+install_junod_systemd_service
+
 create_user "$MONITOR_USER"
-"$SCRIPT_PATH"/install-monitoring "$MONITOR_USER"
+"$SCRIPT_PATH"/monitoring-setup.sh "$MONITOR_USER"

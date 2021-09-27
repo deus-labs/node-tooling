@@ -1,8 +1,10 @@
 #!/bin/sh
 
+SCRIPT_PATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 set -a && . "$SCRIPT_PATH"/${1:-.env} && set +a
-[ "$(id -un)" -ne "$VALIDATOR_USER" ] && echo "You must be $VALIDATOR_USER to run this script!" && exit 1
+[ "$(id -un)" != "$VALIDATOR_USER" ] && echo "You must be $VALIDATOR_USER to run this script!" && exit 1
 
+. "$HOME"/.profile
 cd && git clone https://github.com/CosmosContracts/juno.git
 cd juno
 git checkout "$JUNO_TAG"
@@ -27,31 +29,3 @@ mkdir -p "$DAEMON_HOME"/cosmovisor/genesis/bin
 mkdir -p "$DAEMON_HOME"/cosmovisor/upgrades
 
 cp "$(which junod)" "$DAEMON_HOME"/cosmovisor/genesis/bin
-
-echo -n "[sudo] password for $USER: "
-read -rs PASSWORD
-echo "$PASSWORD" | sudo -S tee /etc/systemd/system/cosmovisor.service <<EOF
-[Unit]
-Description=cosmovisor
-After=network-online.target
-
-[Service]
-Type=simple
-User=$USER
-WorkingDirectory=$HOME
-ExecStart=$(which cosmovisor) start
-Restart=on-failure
-RestartSec=3
-LimitNOFILE=65535
-Environment="DAEMON_NAME=junod"
-Environment="DAEMON_HOME=$DAEMON_HOME"
-Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
-Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-sudo systemctl daemon-reload
-sudo systemctl enable cosmovisor
-sudo systemctl start cosmovisor
