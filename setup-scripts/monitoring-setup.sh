@@ -100,7 +100,7 @@ cd panic_cosmos
 # /home/"$USERNAME"/.local/bin/pipenv sync
 # /home/"$USERNAME"/.local/bin/pipenv run python run_setup.py
 
-cp "$SCRIPT_PATH"/config/panic_cosmos/*.ini /home/"$USERNAME"/panic_cosmos/config
+cp "$SCRIPT_PATH"/config/panic-cosmos/*.ini /home/"$USERNAME"/panic_cosmos/config
 
 sed -i -e "s/^password *=.*/password = $REDIS_PASS/" \
 -e "s/^bot_token *=.*/bot_token = $TELEGRAM_BOT_TOKEN/g" \
