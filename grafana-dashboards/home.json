@@ -1,0 +1,1712 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 7,
+  "iteration": 1634569497701,
+  "links": [],
+  "panels": [
+    {
+      "datasource": "Prometheus",
+      "gridPos": {
+        "h": 2,
+        "w": 7,
+        "x": 1,
+        "y": 0
+      },
+      "id": 20,
+      "links": [],
+      "options": {
+        "content": "<img width=\"50px\" src=\"https://avatars.githubusercontent.com/u/89633644?s=400&u=95bfd2cbd13207ef992683493742df97e34a7acc&v=4\" style=\"margin: 0px 25px\"/>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "8.1.5",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": null,
+      "gridPos": {
+        "h": 2,
+        "w": 6,
+        "x": 9,
+        "y": 0
+      },
+      "id": 33,
+      "options": {
+        "bgColor": "transparent",
+        "clockType": "24 hour",
+        "countdownSettings": {
+          "endCountdownTime": "2021-10-03T01:39:18+03:00",
+          "endText": "00:00:00"
+        },
+        "dateSettings": {
+          "dateFormat": "DD-MM-YYYY",
+          "fontSize": "16px",
+          "fontWeight": "normal",
+          "locale": "",
+          "showDate": true
+        },
+        "mode": "time",
+        "refresh": "sec",
+        "timeSettings": {
+          "fontSize": "36px",
+          "fontWeight": "bold"
+        },
+        "timezone": "",
+        "timezoneSettings": {
+          "fontSize": "12px",
+          "fontWeight": "normal",
+          "showTimezone": false,
+          "zoneFormat": "offsetAbbv"
+        }
+      },
+      "pluginVersion": "1.2.0",
+      "transparent": true,
+      "type": "grafana-clock-panel"
+    },
+    {
+      "datasource": "Prometheus",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 21,
+        "y": 0
+      },
+      "id": 29,
+      "links": [],
+      "options": {
+        "content": "<img width=\"50px\" src=\"https://avatars.githubusercontent.com/u/79813271?s=200&v=4\" />\n",
+        "mode": "html"
+      },
+      "pluginVersion": "8.1.5",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-purple",
+            "mode": "continuous-BlYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              },
+              {
+                "color": "light-yellow",
+                "value": 70
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 7,
+        "x": 0,
+        "y": 2
+      },
+      "id": 7,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sort(cosmos_validator_rank{chain_id=\"$chain_id\", moniker=\"$moniker\"})",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{ moniker }}",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "count(cosmos_validators_active{chain_id=\"$chain_id\"})",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "total validators",
+          "refId": "B"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "validator rank",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": "HTTP Request",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-BlPu"
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 3,
+        "x": 7,
+        "y": 2
+      },
+      "hideTimeOverride": true,
+      "id": 46,
+      "interval": "30m",
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "price",
+              "text": "juno",
+              "type": "number"
+            }
+          ],
+          "csv_options": {
+            "columns": "",
+            "comment": "",
+            "delimiter": ",",
+            "relax_column_count": false,
+            "skip_empty_lines": false,
+            "skip_lines_with_error": false
+          },
+          "data": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "refId": "A",
+          "root_selector": "",
+          "source": "url",
+          "type": "json",
+          "url": "https://api-osmosis.imperator.co/tokens/v1/JUNO",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "timeShift": null,
+      "title": "price",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-blues"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 7,
+        "x": 10,
+        "y": 2
+      },
+      "id": 18,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "cosmos_validator_commission{chain_id=\"$chain_id\", moniker=\"$moniker\"}",
+          "interval": "",
+          "legendFormat": "{{ denom }}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "commission",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "super-light-purple",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 7,
+        "x": 17,
+        "y": 2
+      },
+      "id": 13,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(cosmos_validator_delegations{chain_id=\"$chain_id\", moniker=\"$moniker\"}) by (denom)",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{denom}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "total delegations",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-YlBl"
+          },
+          "decimals": 2,
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 0,
+        "y": 8
+      },
+      "id": 50,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "cosmos_validator_commission{chain_id=\"$chain_id\", moniker=\"$moniker\"} offset 1d",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "day-current",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "predict_linear(cosmos_validator_commission{chain_id=\"$chain_id\", moniker=\"$moniker\"}[1d] offset 30m, 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "day-prediction",
+          "refId": "B"
+        }
+      ],
+      "timeFrom": "+1d",
+      "timeShift": null,
+      "title": "projected commission (daily)",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "juno",
+            "binary": {
+              "left": "day-prediction",
+              "operator": "-",
+              "reducer": "sum",
+              "right": "day-current"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": true
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-YlBl"
+          },
+          "decimals": 2,
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 4,
+        "y": 8
+      },
+      "id": 51,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "cosmos_validator_commission{chain_id=\"$chain_id\", moniker=\"$moniker\"} offset 7d",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "week-current",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "predict_linear(cosmos_validator_commission{chain_id=\"$chain_id\", moniker=\"$moniker\"}[7d] offset 2h, 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "week-prediction",
+          "refId": "B"
+        }
+      ],
+      "timeFrom": "+7d",
+      "timeShift": null,
+      "title": "projected commission (weekly)",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "juno",
+            "binary": {
+              "left": "week-prediction",
+              "operator": "-",
+              "reducer": "sum",
+              "right": "week-current"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": true
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-YlBl"
+          },
+          "decimals": 2,
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 8,
+        "y": 8
+      },
+      "id": 52,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "cosmos_validator_commission{chain_id=\"$chain_id\", moniker=\"$moniker\"} offset 30d",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "month-current",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "predict_linear(cosmos_validator_commission{chain_id=\"$chain_id\", moniker=\"$moniker\"}[30d] offset 6h, 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "month-prediction",
+          "refId": "B"
+        }
+      ],
+      "timeFrom": "+30d",
+      "timeShift": null,
+      "title": "projected commission (monthly)",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "juno",
+            "binary": {
+              "left": "month-prediction",
+              "operator": "-",
+              "reducer": "sum",
+              "right": "month-current"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": true
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-RdYlGr"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 12,
+        "y": 8
+      },
+      "id": 44,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "cosmos_validator_rewards{chain_id=\"$chain_id\", moniker=\"$moniker\"}",
+          "interval": "",
+          "legendFormat": "{{ denom }}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "total rewards",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "light-red",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 3,
+        "x": 18,
+        "y": 8
+      },
+      "id": 24,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "cosmos_wallet_balance{chain_id=\"$chain_id\", address=\"juno17skjxhtt54prnpxcs7a5rv9znlldpe5kwmn2nc\"}",
+          "interval": "",
+          "legendFormat": "{{ denom }}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "operator wallet balance",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-YlRd"
+          },
+          "mappings": [],
+          "max": 1,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 3,
+        "x": 21,
+        "y": 8
+      },
+      "id": 42,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "cosmos_validator_commission_rate{chain_id=\"$chain_id\", moniker=\"$moniker\"}",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "commission rate",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-YlBl"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 0,
+        "y": 14
+      },
+      "id": 39,
+      "options": {
+        "displayMode": "gradient",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "text": {}
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "cosmos_validator_delegations{chain_id=\"$chain_id\", moniker=\"$moniker\"}",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{delegated_by}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "delegators",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "__name__": true,
+              "address": true,
+              "chain_id": true,
+              "instance": true,
+              "job": true,
+              "moniker": true
+            },
+            "indexByName": {
+              "Time": 0,
+              "Value": 7,
+              "address": 1,
+              "chain_id": 3,
+              "delegated_by": 4,
+              "denom": 8,
+              "instance": 5,
+              "job": 6,
+              "moniker": 2
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "light-yellow",
+            "mode": "continuous-YlBl"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 8,
+        "y": 14
+      },
+      "id": 37,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "count(cosmos_validator_delegations{chain_id=\"$chain_id\", moniker=\"$moniker\"})",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "delegations",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "count(cosmos_validator_redelegations{chain_id=\"$chain_id\", moniker=\"$moniker\"}) OR on() vector(0)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "redelegations",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "count(cosmos_validator_unbondings{chain_id=\"$chain_id\", moniker=\"$moniker\"}) OR on() vector(0)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "unbondings",
+          "refId": "C"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "delegation counts",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "super-light-purple",
+            "mode": "palette-classic"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 7,
+        "x": 14,
+        "y": 14
+      },
+      "id": 40,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(cosmos_validator_redelegations{chain_id=\"$chain_id\", moniker=\"$moniker\"}) by (moniker, denom) OR on() vector(0)",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "redelegations {{denom}}",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(cosmos_validator_unbondings{chain_id=\"$chain_id\", moniker=\"$moniker\"}) by (moniker, denom)",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "unbondings, {{denom}}",
+          "refId": "C"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "total redelegations and unbondings",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 2
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 3,
+        "x": 21,
+        "y": 14
+      },
+      "id": 22,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "cosmos_validator_missed_blocks{chain_id=\"$chain_id\", moniker=\"$moniker\"}",
+          "interval": "",
+          "legendFormat": "{{ moniker }}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "missed blocks",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "aliasColors": {
+        "Recv_bytes_eth2": "#7EB26D",
+        "Recv_bytes_lo": "#0A50A1",
+        "Recv_drop_eth2": "#6ED0E0",
+        "Recv_drop_lo": "#E0F9D7",
+        "Recv_errs_eth2": "#BF1B00",
+        "Recv_errs_lo": "#CCA300",
+        "Trans_bytes_eth2": "#7EB26D",
+        "Trans_bytes_lo": "#0A50A1",
+        "Trans_drop_eth2": "#6ED0E0",
+        "Trans_drop_lo": "#E0F9D7",
+        "Trans_errs_eth2": "#BF1B00",
+        "Trans_errs_lo": "#CCA300",
+        "recv_bytes_lo": "#0A50A1",
+        "recv_drop_eth0": "#99440A",
+        "recv_drop_lo": "#967302",
+        "recv_errs_eth0": "#BF1B00",
+        "recv_errs_lo": "#890F02",
+        "trans_bytes_eth0": "#7EB26D",
+        "trans_bytes_lo": "#0A50A1",
+        "trans_drop_eth0": "#99440A",
+        "trans_drop_lo": "#967302",
+        "trans_errs_eth0": "#BF1B00",
+        "trans_errs_lo": "#890F02"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 10,
+      "fillGradient": 3,
+      "gridPos": {
+        "h": 7,
+        "w": 9,
+        "x": 0,
+        "y": 20
+      },
+      "hiddenSeries": false,
+      "id": 26,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": false,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.1.5",
+      "pointradius": 0.5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "$$hashKey": "object:392",
+          "alias": "/.*trans.*/",
+          "transform": "negative-Y"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "rate(node_network_receive_bytes_total{job=\"node\"}[$__rate_interval])*8",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "{{instance}}-recv {{device}}",
+          "refId": "A",
+          "step": 240
+        },
+        {
+          "exemplar": true,
+          "expr": "rate(node_network_transmit_bytes_total{job=\"node\"}[$__rate_interval])*8",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "{{instance}}-trans {{device}} ",
+          "refId": "B",
+          "step": 240
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Network Traffic",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:399",
+          "format": "bps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:400",
+          "format": "pps",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "semi-dark-orange",
+            "mode": "fixed"
+          },
+          "decimals": 0,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 9,
+        "y": 20
+      },
+      "hideTimeOverride": false,
+      "id": 9,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "tendermint_consensus_height{chain_id=\"$chain_id\", instance=\"sentry1\"}",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "30s",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "block height",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-BlPu"
+          },
+          "decimals": 2,
+          "mappings": [],
+          "max": 1,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 15,
+        "y": 20
+      },
+      "id": 48,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "tendermint_consensus_validator_power{chain_id=\"$chain_id\"}",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "tendermint_consensus_validators_power{chain_id=\"$chain_id\", instance=\"sentry1\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "B"
+        }
+      ],
+      "title": "voting power percentage",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "voting power percentage",
+            "binary": {
+              "left": "tendermint_consensus_validator_power{chain_id=\"juno-1\", group=\"juno\", instance=\"validator\", job=\"juno\", validator_address=\"1A3535BCDDE63C6620F13E5E558418C87C2A0E05\"}",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "tendermint_consensus_validators_power{chain_id=\"juno-1\", group=\"juno\", instance=\"sentry1\", job=\"juno\"}"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "diffperc"
+            },
+            "replaceFields": true
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-BlPu"
+          },
+          "decimals": 0,
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#e24d42",
+                "value": null
+              },
+              {
+                "color": "#ef843c",
+                "value": 2
+              },
+              {
+                "color": "#7eb26d",
+                "value": 20
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 5,
+        "x": 19,
+        "y": 20
+      },
+      "hideTimeOverride": true,
+      "id": 11,
+      "links": [],
+      "options": {
+        "displayMode": "gradient",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "text": {}
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "tendermint_p2p_peers{chain_id=\"$chain_id\"}",
+          "format": "time_series",
+          "instant": true,
+          "interval": "30s",
+          "intervalFactor": 1,
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Connected Peers",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "super-light-purple",
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 16,
+        "w": 15,
+        "x": 9,
+        "y": 26
+      },
+      "id": 28,
+      "options": {
+        "displayLabels": [],
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "values": [
+            "value",
+            "percent"
+          ]
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sort_desc(cosmos_validators_tokens{chain_id=\"$chain_id\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{ moniker }}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "tokens by validator",
+      "transparent": true,
+      "type": "piechart"
+    },
+    {
+      "datasource": null,
+      "gridPos": {
+        "h": 10,
+        "w": 5,
+        "x": 0,
+        "y": 27
+      },
+      "id": 3,
+      "links": [],
+      "options": {
+        "folderId": 0,
+        "maxItems": 30,
+        "query": "",
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": true,
+        "showStarred": false,
+        "tags": []
+      },
+      "pluginVersion": "8.1.5",
+      "tags": [],
+      "title": "Detailed Dashboards",
+      "transparent": true,
+      "type": "dashlist"
+    }
+  ],
+  "refresh": "15m",
+  "schemaVersion": 30,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "juno-1",
+          "value": "juno-1"
+        },
+        "datasource": null,
+        "definition": "label_values(cosmos_validators_rank, chain_id)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Chain ID",
+        "multi": false,
+        "name": "chain_id",
+        "options": [],
+        "query": {
+          "query": "label_values(cosmos_validators_rank, chain_id)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "deus labs",
+          "value": "deus labs"
+        },
+        "datasource": null,
+        "definition": "label_values(cosmos_validator_commission{chain_id=\"$chain_id\"}, moniker)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Moniker",
+        "multi": false,
+        "name": "moniker",
+        "options": [],
+        "query": {
+          "query": "label_values(cosmos_validator_commission{chain_id=\"$chain_id\"}, moniker)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-2d",
+    "to": "now"
+  },
+  "timepicker": {
+    "hidden": false,
+    "refresh_intervals": [
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ],
+    "type": "timepicker"
+  },
+  "timezone": "browser",
+  "title": "Home",
+  "uid": "SKeHfgvnk",
+  "version": 68
+}
