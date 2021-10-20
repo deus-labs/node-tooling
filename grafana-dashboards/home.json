@@ -19,11 +19,13 @@
     ]
   },
   "editable": true,
+  "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
   "id": 7,
-  "iteration": 1634569497701,
+  "iteration": 1634742286612,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "datasource": "Prometheus",
@@ -39,7 +41,7 @@
         "content": "<img width=\"50px\" src=\"https://avatars.githubusercontent.com/u/89633644?s=400&u=95bfd2cbd13207ef992683493742df97e34a7acc&v=4\" style=\"margin: 0px 25px\"/>\n",
         "mode": "html"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.1",
       "transparent": true,
       "type": "text"
     },
@@ -98,7 +100,7 @@
         "content": "<img width=\"50px\" src=\"https://avatars.githubusercontent.com/u/79813271?s=200&v=4\" />\n",
         "mode": "html"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.1",
       "transparent": true,
       "type": "text"
     },
@@ -149,7 +151,7 @@
         "text": {},
         "textMode": "value_and_name"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "exemplar": true,
@@ -221,7 +223,7 @@
         "text": {},
         "textMode": "value_and_name"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "columns": [
@@ -306,7 +308,7 @@
         "text": {},
         "textMode": "value_and_name"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "exemplar": true,
@@ -367,7 +369,7 @@
         "text": {},
         "textMode": "value_and_name"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "exemplar": true,
@@ -429,7 +431,7 @@
         "text": {},
         "textMode": "value_and_name"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "exemplar": true,
@@ -520,7 +522,7 @@
         "text": {},
         "textMode": "value_and_name"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "exemplar": true,
@@ -611,7 +613,7 @@
         "text": {},
         "textMode": "value_and_name"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "exemplar": true,
@@ -700,7 +702,7 @@
         "text": {},
         "textMode": "value_and_name"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "exemplar": true,
@@ -760,7 +762,7 @@
         "text": {},
         "textMode": "value_and_name"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "exemplar": true,
@@ -821,7 +823,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "exemplar": true,
@@ -882,7 +884,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "exemplar": true,
@@ -971,7 +973,7 @@
         "text": {},
         "textMode": "value_and_name"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "exemplar": true,
@@ -1048,7 +1050,7 @@
         "text": {},
         "textMode": "value_and_name"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "exemplar": true,
@@ -1123,7 +1125,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "exemplar": true,
@@ -1209,7 +1211,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.1",
       "pointradius": 0.5,
       "points": false,
       "renderer": "flot",
@@ -1340,7 +1342,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "exemplar": true,
@@ -1407,7 +1409,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "exemplar": true,
@@ -1502,7 +1504,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "exemplar": true,
@@ -1607,7 +1609,7 @@
         "showStarred": false,
         "tags": []
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.1",
       "tags": [],
       "title": "Detailed Dashboards",
       "transparent": true,
@@ -1615,7 +1617,7 @@
     }
   ],
   "refresh": "15m",
-  "schemaVersion": 30,
+  "schemaVersion": 31,
   "style": "dark",
   "tags": [],
   "templating": {
