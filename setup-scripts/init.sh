@@ -33,6 +33,8 @@ init() {
     # git lfs install --skip-repo
     cp /usr/share/doc/util-linux/examples/securetty /etc/securetty
 
+    timedatectl set-timezone Europe/Istanbul
+
     cat > /etc/security/limits.d/nofile.conf <<EOF
 *                soft    nofile          65535
 *                hard    nofile          65535

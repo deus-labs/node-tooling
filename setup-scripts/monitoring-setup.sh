@@ -42,8 +42,7 @@ ExecStart=/usr/local/bin/prometheus \
   --storage.tsdb.path=/var/lib/prometheus \
   --web.console.templates=/etc/prometheus/consoles \
   --web.console.libraries=/etc/prometheus/console_libraries \
-  --web.listen-address=0.0.0.0:9000 \
-  --web.external-url=
+  --web.listen-address=127.0.0.1:9000
 
 SyslogIdentifier=prometheus
 Restart=always
@@ -66,6 +65,7 @@ wget https://github.com/prometheus/node_exporter/releases/download/v1.2.1/node_e
 tar xvfz node_exporter-1.2.1.linux-amd64.tar.gz
 cd node_exporter-1.2.1.linux-amd64
 chmod +x node_exporter
+mv node_exporter /usr/bin/
 
 cat >/etc/systemd/system/node-exporter-prometheus.service <<EOF
 [Unit]
@@ -75,8 +75,7 @@ After=network.target
 [Service]
 Type=simple
 User=$USERNAME
-WorkingDirectory=/home/$USERNAME
-ExecStart=/home/$USERNAME/node_exporter-1.2.1.linux-amd64/node_exporter
+ExecStart=/usr/bin/node_exporter
 Restart=on-failure
 
 [Install]
@@ -126,7 +125,7 @@ StartLimitIntervalSec=0
 [Service]
 Type=simple
 Restart=always
-User="$USERNAME"
+User=$USERNAME
 TimeoutStopSec=90s
 WorkingDirectory=/home/$USERNAME/panic_cosmos/
 ExecStart=/home/$USERNAME/.local/bin/pipenv run python /home/$USERNAME/panic_cosmos/run_alerter.py
