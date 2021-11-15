@@ -1,1141 +1,1142 @@
 {
-    "annotations": {
-      "list": [
-        {
-          "builtIn": 1,
-          "datasource": "-- Grafana --",
-          "enable": true,
-          "hide": true,
-          "iconColor": "rgba(0, 211, 255, 1)",
-          "name": "Annotations & Alerts",
-          "target": {
-            "limit": 100,
-            "matchAny": false,
-            "tags": [],
-            "type": "dashboard"
-          },
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
           "type": "dashboard"
-        }
-      ]
-    },
-    "description": "Stats of a Cosmos wallet",
-    "editable": true,
-    "fiscalYearStartMonth": 0,
-    "gnetId": null,
-    "graphTooltip": 0,
-    "id": 3,
-    "iteration": 1634742238698,
-    "links": [],
-    "liveNow": false,
-    "panels": [
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                }
-              ]
-            },
-            "unit": "locale"
-          },
-          "overrides": []
         },
-        "gridPos": {
-          "h": 4,
-          "w": 4,
-          "x": 0,
-          "y": 0
-        },
-        "id": 2,
-        "options": {
-          "colorMode": "value",
-          "graphMode": "none",
-          "justifyMode": "auto",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "text": {},
-          "textMode": "value_and_name"
-        },
-        "pluginVersion": "8.2.1",
-        "targets": [
-          {
-            "exemplar": true,
-            "expr": "cosmos_wallet_balance{chain_id=\"$chain_id\", address=\"$address\"}",
-            "interval": "",
-            "legendFormat": "{{ denom }}",
-            "refId": "A"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "balance",
-        "type": "stat"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "locale"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 4,
-          "w": 4,
-          "x": 4,
-          "y": 0
-        },
-        "id": 10,
-        "options": {
-          "colorMode": "value",
-          "graphMode": "none",
-          "justifyMode": "auto",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "text": {},
-          "textMode": "auto"
-        },
-        "pluginVersion": "8.2.1",
-        "targets": [
-          {
-            "exemplar": true,
-            "expr": "count(cosmos_wallet_delegations{chain_id=\"$chain_id\", address=\"$address\"}) or on() vector(0)",
-            "interval": "",
-            "legendFormat": "{{ address }}, {{ denom }}",
-            "refId": "A"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "delegations",
-        "type": "stat"
-      },
-      {
-        "aliasColors": {},
-        "bars": false,
-        "dashLength": 10,
-        "dashes": false,
-        "datasource": null,
-        "fill": 1,
-        "fillGradient": 0,
-        "gridPos": {
-          "h": 8,
-          "w": 16,
-          "x": 8,
-          "y": 0
-        },
-        "hiddenSeries": false,
-        "id": 6,
-        "legend": {
-          "avg": false,
-          "current": false,
-          "max": false,
-          "min": false,
-          "show": true,
-          "total": false,
-          "values": false
-        },
-        "lines": true,
-        "linewidth": 1,
-        "nullPointMode": "null",
-        "options": {
-          "alertThreshold": true
-        },
-        "percentage": false,
-        "pluginVersion": "8.2.1",
-        "pointradius": 2,
-        "points": false,
-        "renderer": "flot",
-        "seriesOverrides": [],
-        "spaceLength": 10,
-        "stack": false,
-        "steppedLine": false,
-        "targets": [
-          {
-            "exemplar": true,
-            "expr": "sum(cosmos_wallet_rewards{chain_id=\"$chain_id\", address=\"$address\"}) by (address, denom)",
-            "interval": "",
-            "legendFormat": "{{address}}, {{denom}}",
-            "refId": "A"
-          }
-        ],
-        "thresholds": [],
-        "timeFrom": null,
-        "timeRegions": [],
-        "timeShift": null,
-        "title": "rewards",
-        "tooltip": {
-          "shared": true,
-          "sort": 0,
-          "value_type": "individual"
-        },
-        "type": "graph",
-        "xaxis": {
-          "buckets": null,
-          "mode": "time",
-          "name": null,
-          "show": true,
-          "values": []
-        },
-        "yaxes": [
-          {
-            "$$hashKey": "object:598",
-            "format": "short",
-            "label": null,
-            "logBase": 1,
-            "max": null,
-            "min": null,
-            "show": true
-          },
-          {
-            "$$hashKey": "object:599",
-            "format": "short",
-            "label": null,
-            "logBase": 1,
-            "max": null,
-            "min": null,
-            "show": true
-          }
-        ],
-        "yaxis": {
-          "align": false,
-          "alignLevel": null
-        }
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 4,
-          "w": 4,
-          "x": 0,
-          "y": 4
-        },
-        "id": 11,
-        "options": {
-          "colorMode": "value",
-          "graphMode": "none",
-          "justifyMode": "auto",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "text": {},
-          "textMode": "auto"
-        },
-        "pluginVersion": "8.2.1",
-        "targets": [
-          {
-            "exemplar": true,
-            "expr": "count(cosmos_wallet_redelegations{chain_id=\"$chain_id\", address=\"$address\"}) or on() vector(0)",
-            "interval": "",
-            "legendFormat": "{{ address }}, {{ denom }}",
-            "refId": "A"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "redelegations",
-        "type": "stat"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 4,
-          "w": 4,
-          "x": 4,
-          "y": 4
-        },
-        "id": 12,
-        "options": {
-          "colorMode": "value",
-          "graphMode": "none",
-          "justifyMode": "auto",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "text": {},
-          "textMode": "auto"
-        },
-        "pluginVersion": "8.2.1",
-        "targets": [
-          {
-            "exemplar": true,
-            "expr": "count(cosmos_wallet_unbondings{chain_id=\"$chain_id\", address=\"$address\"}) or on() vector(0)",
-            "interval": "",
-            "legendFormat": "{{ address }}, {{ denom }}",
-            "refId": "A"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "unbondings",
-        "type": "stat"
-      },
-      {
-        "aliasColors": {},
-        "bars": false,
-        "dashLength": 10,
-        "dashes": false,
-        "datasource": null,
-        "fill": 1,
-        "fillGradient": 0,
-        "gridPos": {
-          "h": 8,
-          "w": 8,
-          "x": 0,
-          "y": 8
-        },
-        "hiddenSeries": false,
-        "id": 3,
-        "legend": {
-          "avg": false,
-          "current": false,
-          "max": false,
-          "min": false,
-          "show": true,
-          "total": false,
-          "values": false
-        },
-        "lines": true,
-        "linewidth": 1,
-        "nullPointMode": "null",
-        "options": {
-          "alertThreshold": true
-        },
-        "percentage": false,
-        "pluginVersion": "8.2.1",
-        "pointradius": 2,
-        "points": false,
-        "renderer": "flot",
-        "seriesOverrides": [],
-        "spaceLength": 10,
-        "stack": false,
-        "steppedLine": false,
-        "targets": [
-          {
-            "exemplar": true,
-            "expr": "sum(cosmos_wallet_delegations{chain_id=\"$chain_id\", address=\"$address\"}) by (address, denom)",
-            "interval": "",
-            "legendFormat": "{{ address }}, {{ denom }}",
-            "refId": "A"
-          }
-        ],
-        "thresholds": [],
-        "timeFrom": null,
-        "timeRegions": [],
-        "timeShift": null,
-        "title": "delegations",
-        "tooltip": {
-          "shared": true,
-          "sort": 0,
-          "value_type": "individual"
-        },
-        "type": "graph",
-        "xaxis": {
-          "buckets": null,
-          "mode": "time",
-          "name": null,
-          "show": true,
-          "values": []
-        },
-        "yaxes": [
-          {
-            "$$hashKey": "object:598",
-            "format": "short",
-            "label": null,
-            "logBase": 1,
-            "max": null,
-            "min": null,
-            "show": true
-          },
-          {
-            "$$hashKey": "object:599",
-            "format": "short",
-            "label": null,
-            "logBase": 1,
-            "max": null,
-            "min": null,
-            "show": true
-          }
-        ],
-        "yaxis": {
-          "align": false,
-          "alignLevel": null
-        }
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "custom": {
-              "align": null,
-              "displayMode": "auto",
-              "filterable": false
-            },
-            "decimals": 9,
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "locale"
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "address"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 384
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "delegated_to"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 425
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 8,
-          "w": 16,
-          "x": 8,
-          "y": 8
-        },
-        "id": 7,
-        "options": {
-          "showHeader": true,
-          "sortBy": []
-        },
-        "pluginVersion": "8.2.1",
-        "targets": [
-          {
-            "exemplar": true,
-            "expr": "cosmos_wallet_delegations{chain_id=\"$chain_id\", address=\"$address\"}",
-            "format": "table",
-            "instant": true,
-            "interval": "",
-            "legendFormat": "{{ address }}, {{ denom }}",
-            "refId": "A"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "delegations",
-        "transformations": [
-          {
-            "id": "organize",
-            "options": {
-              "excludeByName": {
-                "Time": true,
-                "__name__": true,
-                "address": true,
-                "chain_id": true,
-                "instance": true,
-                "job": true
-              },
-              "indexByName": {
-                "Time": 0,
-                "Value": 3,
-                "__name__": 5,
-                "address": 2,
-                "chain_id": 6,
-                "delegated_to": 1,
-                "denom": 4,
-                "instance": 7,
-                "job": 8
-              },
-              "renameByName": {}
-            }
-          }
-        ],
-        "type": "table"
-      },
-      {
-        "aliasColors": {},
-        "bars": false,
-        "dashLength": 10,
-        "dashes": false,
-        "datasource": null,
-        "fill": 1,
-        "fillGradient": 0,
-        "gridPos": {
-          "h": 8,
-          "w": 8,
-          "x": 0,
-          "y": 16
-        },
-        "hiddenSeries": false,
-        "id": 4,
-        "legend": {
-          "avg": false,
-          "current": false,
-          "max": false,
-          "min": false,
-          "show": false,
-          "total": false,
-          "values": false
-        },
-        "lines": true,
-        "linewidth": 1,
-        "nullPointMode": "null",
-        "options": {
-          "alertThreshold": true
-        },
-        "percentage": false,
-        "pluginVersion": "8.2.1",
-        "pointradius": 2,
-        "points": false,
-        "renderer": "flot",
-        "seriesOverrides": [],
-        "spaceLength": 10,
-        "stack": false,
-        "steppedLine": false,
-        "targets": [
-          {
-            "exemplar": true,
-            "expr": "sum(cosmos_wallet_redelegations{chain_id=\"$chain_id\", address=\"$address\"}) or on() vector(0)",
-            "instant": true,
-            "interval": "",
-            "legendFormat": "{{ address. }}",
-            "refId": "A"
-          }
-        ],
-        "thresholds": [],
-        "timeFrom": null,
-        "timeRegions": [],
-        "timeShift": null,
-        "title": "redelegations",
-        "tooltip": {
-          "shared": true,
-          "sort": 0,
-          "value_type": "individual"
-        },
-        "type": "graph",
-        "xaxis": {
-          "buckets": null,
-          "mode": "time",
-          "name": null,
-          "show": true,
-          "values": []
-        },
-        "yaxes": [
-          {
-            "$$hashKey": "object:598",
-            "format": "short",
-            "label": null,
-            "logBase": 1,
-            "max": null,
-            "min": null,
-            "show": true
-          },
-          {
-            "$$hashKey": "object:599",
-            "format": "short",
-            "label": null,
-            "logBase": 1,
-            "max": null,
-            "min": null,
-            "show": true
-          }
-        ],
-        "yaxis": {
-          "align": false,
-          "alignLevel": null
-        }
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "custom": {
-              "align": null,
-              "displayMode": "auto",
-              "filterable": true
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 8,
-          "w": 16,
-          "x": 8,
-          "y": 16
-        },
-        "id": 13,
-        "options": {
-          "showHeader": true
-        },
-        "pluginVersion": "8.2.1",
-        "targets": [
-          {
-            "exemplar": true,
-            "expr": "cosmos_wallet_redelegations{chain_id=\"$chain_id\", address=\"$address\"}",
-            "format": "table",
-            "instant": true,
-            "interval": "",
-            "legendFormat": "",
-            "refId": "A"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "redelegations",
-        "transformations": [
-          {
-            "id": "organize",
-            "options": {
-              "excludeByName": {
-                "Time": true
-              },
-              "indexByName": {
-                "Time": 0,
-                "Value": 2,
-                "address": 1,
-                "denom": 3
-              },
-              "renameByName": {}
-            }
-          }
-        ],
-        "type": "table"
-      },
-      {
-        "aliasColors": {},
-        "bars": false,
-        "dashLength": 10,
-        "dashes": false,
-        "datasource": null,
-        "fill": 1,
-        "fillGradient": 0,
-        "gridPos": {
-          "h": 8,
-          "w": 8,
-          "x": 0,
-          "y": 24
-        },
-        "hiddenSeries": false,
-        "id": 5,
-        "legend": {
-          "avg": false,
-          "current": false,
-          "max": false,
-          "min": false,
-          "show": true,
-          "total": false,
-          "values": false
-        },
-        "lines": true,
-        "linewidth": 1,
-        "nullPointMode": "null",
-        "options": {
-          "alertThreshold": true
-        },
-        "percentage": false,
-        "pluginVersion": "8.2.1",
-        "pointradius": 2,
-        "points": false,
-        "renderer": "flot",
-        "seriesOverrides": [],
-        "spaceLength": 10,
-        "stack": false,
-        "steppedLine": false,
-        "targets": [
-          {
-            "exemplar": true,
-            "expr": "sum(cosmos_wallet_unbondings{chain_id=\"$chain_id\", address=\"$address\"}) by (address, denom)",
-            "interval": "",
-            "legendFormat": "{{ address }}, {{ denom }}",
-            "refId": "A"
-          }
-        ],
-        "thresholds": [],
-        "timeFrom": null,
-        "timeRegions": [],
-        "timeShift": null,
-        "title": "unbondings",
-        "tooltip": {
-          "shared": true,
-          "sort": 0,
-          "value_type": "individual"
-        },
-        "type": "graph",
-        "xaxis": {
-          "buckets": null,
-          "mode": "time",
-          "name": null,
-          "show": true,
-          "values": []
-        },
-        "yaxes": [
-          {
-            "$$hashKey": "object:598",
-            "format": "short",
-            "label": null,
-            "logBase": 1,
-            "max": null,
-            "min": null,
-            "show": true
-          },
-          {
-            "$$hashKey": "object:599",
-            "format": "short",
-            "label": null,
-            "logBase": 1,
-            "max": null,
-            "min": null,
-            "show": true
-          }
-        ],
-        "yaxis": {
-          "align": false,
-          "alignLevel": null
-        }
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "custom": {
-              "align": null,
-              "displayMode": "auto",
-              "filterable": false
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            }
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "unbonded_from"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 446
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 8,
-          "w": 16,
-          "x": 8,
-          "y": 24
-        },
-        "id": 8,
-        "options": {
-          "showHeader": true,
-          "sortBy": []
-        },
-        "pluginVersion": "8.2.1",
-        "targets": [
-          {
-            "exemplar": true,
-            "expr": "sum(cosmos_wallet_unbondings{chain_id=\"$chain_id\", address=\"$address\"}) by (unbonded_from, denom)",
-            "format": "table",
-            "instant": true,
-            "interval": "",
-            "legendFormat": "{{ unbonded_from }}, {{ denom }}",
-            "refId": "A"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "unbondings",
-        "transformations": [
-          {
-            "id": "organize",
-            "options": {
-              "excludeByName": {
-                "Time": true
-              },
-              "indexByName": {
-                "Time": 1,
-                "Value": 2,
-                "denom": 3,
-                "unbonded_from": 0
-              },
-              "renameByName": {}
-            }
-          }
-        ],
-        "type": "table"
-      },
-      {
-        "alert": {
-          "alertRuleTags": {},
-          "conditions": [
-            {
-              "evaluator": {
-                "params": [
-                  0,
-                  0
-                ],
-                "type": "outside_range"
-              },
-              "operator": {
-                "type": "and"
-              },
-              "query": {
-                "params": [
-                  "B",
-                  "1m",
-                  "now"
-                ]
-              },
-              "reducer": {
-                "params": [],
-                "type": "diff"
-              },
-              "type": "query"
-            }
-          ],
-          "executionErrorState": "keep_state",
-          "for": "0m",
-          "frequency": "1m",
-          "handler": 1,
-          "name": "wallet balance change",
-          "noDataState": "keep_state",
-          "notifications": [
-            {
-              "uid": "aGyTkGvnz"
-            },
-            {
-              "uid": "krM1zGv7z"
-            }
-          ]
-        },
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineInterpolation": "linear",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                }
-              ]
-            },
-            "unit": "locale"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 5,
-          "w": 8,
-          "x": 0,
-          "y": 32
-        },
-        "id": 14,
-        "options": {
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom"
-          },
-          "tooltip": {
-            "mode": "single"
-          }
-        },
-        "pluginVersion": "8.1.5",
-        "targets": [
-          {
-            "exemplar": true,
-            "expr": "cosmos_wallet_balance{chain_id=\"$chain_id\", address=\"$address\"}",
-            "interval": "",
-            "legendFormat": "{{ denom }}",
-            "refId": "A"
-          },
-          {
-            "exemplar": true,
-            "expr": "cosmos_wallet_balance{chain_id=\"juno-1\", address=\"juno17skjxhtt54prnpxcs7a5rv9znlldpe5kwmn2nc\"}",
-            "hide": true,
-            "interval": "",
-            "legendFormat": "{{ denom }}",
-            "refId": "B"
-          }
-        ],
-        "thresholds": [
-          {
-            "colorMode": "critical",
-            "op": "lt",
-            "value": 0,
-            "visible": true
-          },
-          {
-            "colorMode": "critical",
-            "op": "gt",
-            "value": 0,
-            "visible": true
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "balance history",
-        "type": "timeseries"
+        "type": "dashboard"
       }
-    ],
-    "refresh": "",
-    "schemaVersion": 31,
-    "style": "dark",
-    "tags": [
-      "cosmos",
-      "blockchain",
-      "wallet"
-    ],
-    "templating": {
-      "list": [
+    ]
+  },
+  "description": "Stats of a Cosmos wallet",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 3,
+  "iteration": 1636985728208,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "8.2.1",
+      "targets": [
         {
-          "allValue": null,
-          "current": {
-            "selected": false,
-            "text": "juno-1",
-            "value": "juno-1"
+          "exemplar": true,
+          "expr": "cosmos_wallet_balance{chain_id=\"$chain_id\", address=\"$address\"}",
+          "interval": "",
+          "legendFormat": "{{ denom }}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "balance",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
           },
-          "datasource": "Prometheus",
-          "definition": "label_values(cosmos_wallet_balance, chain_id)",
-          "description": null,
-          "error": null,
-          "hide": 0,
-          "includeAll": false,
-          "label": "Chain ID",
-          "multi": false,
-          "name": "chain_id",
-          "options": [],
-          "query": {
-            "query": "label_values(cosmos_wallet_balance, chain_id)",
-            "refId": "StandardVariableQuery"
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
           },
-          "refresh": 1,
-          "regex": "",
-          "skipUrlSync": false,
-          "sort": 0,
-          "tagValuesQuery": "",
-          "tagsQuery": "",
-          "type": "query",
-          "useTags": false
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 4,
+        "y": 0
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.2.1",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "count(cosmos_wallet_delegations{chain_id=\"$chain_id\", address=\"$address\"}) or on() vector(0)",
+          "interval": "",
+          "legendFormat": "{{ address }}, {{ denom }}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "delegations",
+      "type": "stat"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 16,
+        "x": 8,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 6,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.2.1",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(cosmos_wallet_rewards{chain_id=\"$chain_id\", address=\"$address\"}) by (address, denom)",
+          "interval": "",
+          "legendFormat": "{{address}}, {{denom}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "rewards",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:598",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
         },
         {
-          "allValue": null,
-          "current": {
-            "selected": false,
-            "text": "juno17skjxhtt54prnpxcs7a5rv9znlldpe5kwmn2nc",
-            "value": "juno17skjxhtt54prnpxcs7a5rv9znlldpe5kwmn2nc"
-          },
-          "datasource": "Prometheus",
-          "definition": "label_values(cosmos_wallet_balance{chain_id=\"$chain_id\"}, address)",
-          "description": null,
-          "error": null,
-          "hide": 0,
-          "includeAll": false,
-          "label": "Address",
-          "multi": false,
-          "name": "address",
-          "options": [],
-          "query": {
-            "query": "label_values(cosmos_wallet_balance{chain_id=\"$chain_id\"}, address)",
-            "refId": "StandardVariableQuery"
-          },
-          "refresh": 1,
-          "regex": "",
-          "skipUrlSync": false,
-          "sort": 0,
-          "tagValuesQuery": "",
-          "tagsQuery": "",
-          "type": "query",
-          "useTags": false
+          "$$hashKey": "object:599",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
-    "time": {
-      "from": "now-2d",
-      "to": "now"
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 4
+      },
+      "id": 11,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.2.1",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "count(cosmos_wallet_redelegations{chain_id=\"$chain_id\", address=\"$address\"}) or on() vector(0)",
+          "interval": "",
+          "legendFormat": "{{ address }}, {{ denom }}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "redelegations",
+      "type": "stat"
     },
-    "timepicker": {},
-    "timezone": "",
-    "title": "Juno Wallet",
-    "uid": "gpQrRVGnz",
-    "version": 8
-  }
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 4,
+        "y": 4
+      },
+      "id": 12,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.2.1",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "count(cosmos_wallet_unbondings{chain_id=\"$chain_id\", address=\"$address\"}) or on() vector(0)",
+          "interval": "",
+          "legendFormat": "{{ address }}, {{ denom }}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "unbondings",
+      "type": "stat"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 8
+      },
+      "hiddenSeries": false,
+      "id": 3,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.2.1",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(cosmos_wallet_delegations{chain_id=\"$chain_id\", address=\"$address\"}) by (address, denom)",
+          "interval": "",
+          "legendFormat": "{{ address }}, {{ denom }}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "delegations",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:598",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:599",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": null,
+            "displayMode": "auto",
+            "filterable": false
+          },
+          "decimals": 9,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "address"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 384
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "delegated_to"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 425
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 16,
+        "x": 8,
+        "y": 8
+      },
+      "id": 7,
+      "options": {
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "8.2.1",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "cosmos_wallet_delegations{chain_id=\"$chain_id\", address=\"$address\"}",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{ address }}, {{ denom }}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "delegations",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "__name__": true,
+              "address": true,
+              "chain_id": true,
+              "instance": true,
+              "job": true
+            },
+            "indexByName": {
+              "Time": 0,
+              "Value": 3,
+              "__name__": 5,
+              "address": 2,
+              "chain_id": 6,
+              "delegated_to": 1,
+              "denom": 4,
+              "instance": 7,
+              "job": 8
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 16
+      },
+      "hiddenSeries": false,
+      "id": 4,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.2.1",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(cosmos_wallet_redelegations{chain_id=\"$chain_id\", address=\"$address\"}) or on() vector(0)",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{ address. }}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "redelegations",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:598",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:599",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": null,
+            "displayMode": "auto",
+            "filterable": true
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 16,
+        "x": 8,
+        "y": 16
+      },
+      "id": 13,
+      "options": {
+        "showHeader": true
+      },
+      "pluginVersion": "8.2.1",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "cosmos_wallet_redelegations{chain_id=\"$chain_id\", address=\"$address\"}",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "redelegations",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true
+            },
+            "indexByName": {
+              "Time": 0,
+              "Value": 2,
+              "address": 1,
+              "denom": 3
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 24
+      },
+      "hiddenSeries": false,
+      "id": 5,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.2.1",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(cosmos_wallet_unbondings{chain_id=\"$chain_id\", address=\"$address\"}) by (address, denom)",
+          "interval": "",
+          "legendFormat": "{{ address }}, {{ denom }}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "unbondings",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:598",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:599",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": null,
+            "displayMode": "auto",
+            "filterable": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "unbonded_from"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 446
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 16,
+        "x": 8,
+        "y": 24
+      },
+      "id": 8,
+      "options": {
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "8.2.1",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(cosmos_wallet_unbondings{chain_id=\"$chain_id\", address=\"$address\"}) by (unbonded_from, denom)",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{ unbonded_from }}, {{ denom }}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "unbondings",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true
+            },
+            "indexByName": {
+              "Time": 1,
+              "Value": 2,
+              "denom": 3,
+              "unbonded_from": 0
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                -1,
+                1
+              ],
+              "type": "outside_range"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "B",
+                "1m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "diff"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "keep_state",
+        "for": "0m",
+        "frequency": "1m",
+        "handler": 1,
+        "name": "wallet balance change",
+        "noDataState": "keep_state",
+        "notifications": [
+          {
+            "uid": "aGyTkGvnz"
+          },
+          {
+            "uid": "krM1zGv7z"
+          }
+        ]
+      },
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 8,
+        "x": 0,
+        "y": 32
+      },
+      "id": 14,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "cosmos_wallet_balance{chain_id=\"$chain_id\", address=\"$address\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{ denom }}",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "cosmos_wallet_balance",
+          "hide": true,
+          "interval": "",
+          "legendFormat": "{{ denom }}",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "op": "lt",
+          "value": -1,
+          "visible": true
+        },
+        {
+          "colorMode": "critical",
+          "op": "gt",
+          "value": 1,
+          "visible": true
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "balance history",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 31,
+  "style": "dark",
+  "tags": [
+    "cosmos",
+    "blockchain",
+    "wallet"
+  ],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "juno-1",
+          "value": "juno-1"
+        },
+        "datasource": "Prometheus",
+        "definition": "label_values(cosmos_wallet_balance, chain_id)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Chain ID",
+        "multi": false,
+        "name": "chain_id",
+        "options": [],
+        "query": {
+          "query": "label_values(cosmos_wallet_balance, chain_id)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "juno17skjxhtt54prnpxcs7a5rv9znlldpe5kwmn2nc",
+          "value": "juno17skjxhtt54prnpxcs7a5rv9znlldpe5kwmn2nc"
+        },
+        "datasource": "Prometheus",
+        "definition": "label_values(cosmos_wallet_balance{chain_id=\"$chain_id\"}, address)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Address",
+        "multi": false,
+        "name": "address",
+        "options": [],
+        "query": {
+          "query": "label_values(cosmos_wallet_balance{chain_id=\"$chain_id\"}, address)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-2d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Wallet",
+  "uid": "gpQrRVGnz",
+  "version": 11
+}

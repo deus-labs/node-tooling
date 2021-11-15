@@ -23,7 +23,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 7,
-  "iteration": 1634742286612,
+  "iteration": 1636985517018,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -229,7 +229,7 @@
           "columns": [
             {
               "selector": "price",
-              "text": "juno",
+              "text": " ",
               "type": "number"
             }
           ],
@@ -249,7 +249,7 @@
           "root_selector": "",
           "source": "url",
           "type": "json",
-          "url": "https://api-osmosis.imperator.co/tokens/v1/JUNO",
+          "url": "https://api-osmosis.imperator.co/tokens/v1/$denom",
           "url_options": {
             "data": "",
             "method": "GET"
@@ -482,7 +482,7 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "continuous-YlBl"
+            "mode": "thresholds"
           },
           "decimals": 2,
           "mappings": [],
@@ -535,7 +535,7 @@
         },
         {
           "exemplar": true,
-          "expr": "predict_linear(cosmos_validator_commission{chain_id=\"$chain_id\", moniker=\"$moniker\"}[7d] offset 2h, 1)",
+          "expr": "predict_linear(cosmos_validator_commission{chain_id=\"$chain_id\", moniker=\"$moniker\"}[7d], 1)",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -573,7 +573,7 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "continuous-YlBl"
+            "mode": "thresholds"
           },
           "decimals": 2,
           "mappings": [],
@@ -626,7 +626,7 @@
         },
         {
           "exemplar": true,
-          "expr": "predict_linear(cosmos_validator_commission{chain_id=\"$chain_id\", moniker=\"$moniker\"}[30d] offset 6h, 1)",
+          "expr": "predict_linear(cosmos_validator_commission{chain_id=\"$chain_id\", moniker=\"$moniker\"}[30d], 1)",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -766,7 +766,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "cosmos_wallet_balance{chain_id=\"$chain_id\", address=\"juno17skjxhtt54prnpxcs7a5rv9znlldpe5kwmn2nc\"}",
+          "expr": "cosmos_wallet_balance{chain_id=\"$chain_id\", address=\"$walletaddr\"}",
           "interval": "",
           "legendFormat": "{{ denom }}",
           "refId": "A"
@@ -888,9 +888,9 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "cosmos_validator_delegations{chain_id=\"$chain_id\", moniker=\"$moniker\"}",
+          "expr": "sort_desc(cosmos_validator_delegations{chain_id=\"$chain_id\", moniker=\"$moniker\"})",
           "format": "time_series",
-          "instant": false,
+          "instant": true,
           "interval": "",
           "legendFormat": "{{delegated_by}}",
           "refId": "A"
@@ -1445,6 +1445,22 @@
             },
             "replaceFields": true
           }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "binary": {
+              "left": "tendermint_consensus_validator_power{chain_id=\"stargaze-1\", group=\"stargaze\", instance=\"validator\", job=\"stargaze\", validator_address=\"5426A55AB40D34C20F286C0E14AC0226E093C61B\"}",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "tendermint_consensus_validators_power{chain_id=\"stargaze-1\", group=\"stargaze\", instance=\"sentry1\", job=\"stargaze\"}"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": true
+          }
         }
       ],
       "type": "stat"
@@ -1544,7 +1560,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 16,
+        "h": 18,
         "w": 15,
         "x": 9,
         "y": 26
@@ -1566,7 +1582,8 @@
             "lastNotNull"
           ],
           "fields": "",
-          "values": false
+          "limit": 100,
+          "values": true
         },
         "tooltip": {
           "mode": "single"
@@ -1616,7 +1633,7 @@
       "type": "dashlist"
     }
   ],
-  "refresh": "15m",
+  "refresh": "",
   "schemaVersion": 31,
   "style": "dark",
   "tags": [],
@@ -1675,6 +1692,60 @@
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "juno17skjxhtt54prnpxcs7a5rv9znlldpe5kwmn2nc",
+          "value": "juno17skjxhtt54prnpxcs7a5rv9znlldpe5kwmn2nc"
+        },
+        "datasource": null,
+        "definition": "label_values(cosmos_wallet_balance{chain_id=\"$chain_id\"}, address)",
+        "description": "validator operator wallet address",
+        "error": null,
+        "hide": 2,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "walletaddr",
+        "options": [],
+        "query": {
+          "query": "label_values(cosmos_wallet_balance{chain_id=\"$chain_id\"}, address)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "juno",
+          "value": "juno"
+        },
+        "datasource": null,
+        "definition": "label_values(cosmos_wallet_balance{chain_id=\"$chain_id\"}, denom)",
+        "description": null,
+        "error": null,
+        "hide": 2,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "denom",
+        "options": [],
+        "query": {
+          "query": "label_values(cosmos_wallet_balance{chain_id=\"$chain_id\"}, denom)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
       }
     ]
   },
@@ -1710,5 +1781,5 @@
   "timezone": "browser",
   "title": "Home",
   "uid": "SKeHfgvnk",
-  "version": 68
+  "version": 81
 }
