@@ -23,7 +23,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 7,
-  "iteration": 1636985517018,
+  "iteration": 1637140647781,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -97,7 +97,7 @@
       "id": 29,
       "links": [],
       "options": {
-        "content": "<img width=\"50px\" src=\"https://avatars.githubusercontent.com/u/79813271?s=200&v=4\" />\n",
+        "content": "<img width=\"50px\" src=\"https://raw.githubusercontent.com/cosmostation/cosmostation_token_resource/master/chains/logo/$denom.png\" />",
         "mode": "html"
       },
       "pluginVersion": "8.2.1",
@@ -110,19 +110,19 @@
         "defaults": {
           "color": {
             "fixedColor": "dark-purple",
-            "mode": "continuous-BlYlRd"
+            "mode": "continuous-BlPu"
           },
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
+                "color": "semi-dark-blue",
                 "value": null
               },
               {
-                "color": "light-yellow",
-                "value": 70
+                "color": "dark-blue",
+                "value": 100
               }
             ]
           }
@@ -182,7 +182,7 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "continuous-BlPu"
+            "mode": "continuous-blues"
           },
           "mappings": [],
           "min": 0,
@@ -330,7 +330,7 @@
         "defaults": {
           "color": {
             "fixedColor": "super-light-purple",
-            "mode": "fixed"
+            "mode": "continuous-blues"
           },
           "mappings": [],
           "min": 0,
@@ -391,7 +391,7 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "continuous-YlBl"
+            "mode": "continuous-BlPu"
           },
           "decimals": 2,
           "mappings": [],
@@ -482,7 +482,8 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "fixedColor": "dark-blue",
+            "mode": "fixed"
           },
           "decimals": 2,
           "mappings": [],
@@ -573,7 +574,8 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "fixedColor": "dark-blue",
+            "mode": "fixed"
           },
           "decimals": 2,
           "mappings": [],
@@ -664,7 +666,7 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "continuous-RdYlGr"
+            "mode": "continuous-BlPu"
           },
           "mappings": [],
           "thresholds": {
@@ -723,8 +725,8 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "light-red",
-            "mode": "fixed"
+            "fixedColor": "semi-dark-blue",
+            "mode": "continuous-BlPu"
           },
           "mappings": [],
           "thresholds": {
@@ -783,7 +785,7 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "continuous-YlRd"
+            "mode": "continuous-BlPu"
           },
           "mappings": [],
           "max": 1,
@@ -792,8 +794,12 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "dark-blue",
                 "value": null
+              },
+              {
+                "color": "dark-purple",
+                "value": 10
               }
             ]
           },
@@ -844,7 +850,7 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "continuous-YlBl"
+            "mode": "continuous-BlPu"
           },
           "mappings": [],
           "thresholds": {
@@ -936,14 +942,14 @@
         "defaults": {
           "color": {
             "fixedColor": "light-yellow",
-            "mode": "continuous-YlBl"
+            "mode": "continuous-BlPu"
           },
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "dark-blue",
                 "value": null
               }
             ]
@@ -1012,14 +1018,14 @@
         "defaults": {
           "color": {
             "fixedColor": "super-light-purple",
-            "mode": "palette-classic"
+            "mode": "continuous-BlPu"
           },
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "dark-blue",
                 "value": null
               }
             ]
@@ -1082,7 +1088,7 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "continuous-BlYlRd"
           },
           "mappings": [],
           "min": 0,
@@ -1298,7 +1304,7 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "semi-dark-orange",
+            "fixedColor": "semi-dark-blue",
             "mode": "fixed"
           },
           "decimals": 0,
@@ -1781,5 +1787,5 @@
   "timezone": "browser",
   "title": "Home",
   "uid": "SKeHfgvnk",
-  "version": 81
+  "version": 83
 }
