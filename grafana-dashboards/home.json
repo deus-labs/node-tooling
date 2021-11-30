@@ -23,7 +23,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 7,
-  "iteration": 1637140647781,
+  "iteration": 1638277481905,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -97,7 +97,7 @@
       "id": 29,
       "links": [],
       "options": {
-        "content": "<img width=\"50px\" src=\"https://raw.githubusercontent.com/cosmostation/cosmostation_token_resource/master/chains/logo/$denom.png\" />",
+        "content": "<img width=\"50px\" src=\"https://raw.githubusercontent.com/cosmostation/cosmostation_token_resource/master/chains/logo/$chain_name.png\" />",
         "mode": "html"
       },
       "pluginVersion": "8.2.1",
@@ -725,8 +725,8 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "semi-dark-blue",
-            "mode": "continuous-BlPu"
+            "fixedColor": "semi-dark-purple",
+            "mode": "fixed"
           },
           "mappings": [],
           "thresholds": {
@@ -1420,6 +1420,7 @@
         {
           "exemplar": true,
           "expr": "tendermint_consensus_validator_power{chain_id=\"$chain_id\"}",
+          "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -1428,6 +1429,7 @@
           "exemplar": true,
           "expr": "tendermint_consensus_validators_power{chain_id=\"$chain_id\", instance=\"sentry1\"}",
           "hide": false,
+          "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "B"
@@ -1440,7 +1442,7 @@
           "options": {
             "alias": "voting power percentage",
             "binary": {
-              "left": "tendermint_consensus_validator_power{chain_id=\"juno-1\", group=\"juno\", instance=\"validator\", job=\"juno\", validator_address=\"1A3535BCDDE63C6620F13E5E558418C87C2A0E05\"}",
+              "left": "tendermint_consensus_validator_power{chain_id=\"juno-1\", group=\"juno\", instance=\"validator-new\", job=\"juno\", validator_address=\"1A3535BCDDE63C6620F13E5E558418C87C2A0E05\"}",
               "operator": "/",
               "reducer": "sum",
               "right": "tendermint_consensus_validators_power{chain_id=\"juno-1\", group=\"juno\", instance=\"sentry1\", job=\"juno\"}"
@@ -1752,6 +1754,33 @@
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "juno",
+          "value": "juno"
+        },
+        "datasource": null,
+        "definition": "label_values(tendermint_p2p_peers{chain_id=\"$chain_id\"}, group)",
+        "description": null,
+        "error": null,
+        "hide": 2,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "chain_name",
+        "options": [],
+        "query": {
+          "query": "label_values(tendermint_p2p_peers{chain_id=\"$chain_id\"}, group)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
       }
     ]
   },
@@ -1787,5 +1816,5 @@
   "timezone": "browser",
   "title": "Home",
   "uid": "SKeHfgvnk",
-  "version": 83
+  "version": 87
 }
