@@ -23,7 +23,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 7,
-  "iteration": 1638277481905,
+  "iteration": 1638622659154,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -90,7 +90,7 @@
       "datasource": "Prometheus",
       "gridPos": {
         "h": 2,
-        "w": 3,
+        "w": 2,
         "x": 21,
         "y": 0
       },
@@ -103,6 +103,51 @@
       "pluginVersion": "8.2.1",
       "transparent": true,
       "type": "text"
+    },
+    {
+      "activeThemeId": 0,
+      "datasource": null,
+      "disableThemePicker": true,
+      "gridPos": {
+        "h": 2,
+        "w": 1,
+        "x": 23,
+        "y": 0
+      },
+      "id": 54,
+      "themes": [
+        {
+          "name": "Theme 2",
+          "styles": [
+            {
+              "props": {
+                "theme": "default"
+              },
+              "type": "basetheme"
+            },
+            {
+              "props": {
+                "url": ""
+              },
+              "type": "bgimage"
+            },
+            {
+              "props": {
+                "url": ""
+              },
+              "type": "url"
+            },
+            {
+              "props": {
+                "text": "body{\nbackground: #000428;  /* fallback for old browsers */\nbackground: -webkit-linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safari 5.1-6 */\nbackground: linear-gradient(to right, #004e92, #000428); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n    \n.css-105dyb7{\n    background: none !important;\n}\n.css-1hik5m6{\n    background: none !important;\n}\n\n.gf-form-label{\n    background-color: #22252b;\n}\n\n.gf-form-label--dashlink, .gf-form-label--variable {\n    background: transparent !important;\n}\n/* \n.gf-form-label{\n    font-size: 16px;\n} */\n\n.gf-form-label--variable{\n    color: #bbd2fe;\n}\n\n.css-mddp8{\n    background-color: transparent;\n}\n\n.dashboard-row--collapsed{\n    background: transparent;\n}"
+              },
+              "type": "style"
+            }
+          ]
+        }
+      ],
+      "transparent": true,
+      "type": "yesoreyeram-boomtheme-panel"
     },
     {
       "datasource": null,
@@ -249,7 +294,7 @@
           "root_selector": "",
           "source": "url",
           "type": "json",
-          "url": "https://api-osmosis.imperator.co/tokens/v1/$denom",
+          "url": "$price_url",
           "url_options": {
             "data": "",
             "method": "GET"
@@ -1617,7 +1662,7 @@
     {
       "datasource": null,
       "gridPos": {
-        "h": 10,
+        "h": 12,
         "w": 5,
         "x": 0,
         "y": 27
@@ -1781,6 +1826,56 @@
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "https://api-osmosis.imperator.co/tokens/v1/JUNO",
+          "value": "https://api-osmosis.imperator.co/tokens/v1/JUNO"
+        },
+        "datasource": "HTTP Request",
+        "definition": "HTTP Request- (legacy) CollectionLookup(juno,https://api-osmosis.imperator.co/tokens/v1/JUNO,stars,https://deuslabs.fi,$denom)",
+        "description": null,
+        "error": null,
+        "hide": 2,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "price_url",
+        "options": [],
+        "query": {
+          "infinityQuery": {
+            "columns": [],
+            "csv_options": {
+              "columns": "",
+              "comment": "",
+              "delimiter": ",",
+              "relax_column_count": false,
+              "skip_empty_lines": false,
+              "skip_lines_with_error": false
+            },
+            "data": "",
+            "filters": [],
+            "format": "table",
+            "refId": "variable",
+            "root_selector": "",
+            "source": "url",
+            "type": "json",
+            "url": "https://jsonplaceholder.typicode.com/users",
+            "url_options": {
+              "data": "",
+              "method": "GET"
+            }
+          },
+          "query": "CollectionLookup(juno,https://api-osmosis.imperator.co/tokens/v1/JUNO,stars,https://deuslabs.fi,$denom)",
+          "queryType": "legacy"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
       }
     ]
   },
@@ -1816,5 +1911,5 @@
   "timezone": "browser",
   "title": "Home",
   "uid": "SKeHfgvnk",
-  "version": 87
+  "version": 95
 }
