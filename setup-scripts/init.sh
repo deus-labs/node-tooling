@@ -8,7 +8,7 @@ set -a && . "$SCRIPT_PATH"/${1:-.env} && set +a
 install_packages() {
     apt-get update
     apt-get -y upgrade
-    apt-get -y install curl git gcc make wget build-essential git-lfs jq
+    apt-get -y install curl git gcc make wget build-essential jq
     ### for snapshot
     # apt-get install liblz4-tool aria2 -y
 }
@@ -59,7 +59,7 @@ create_user() {
 }
 
 install_go() {
-    go_version=$(curl -s "https://golang.org/dl/?mode=json" | jq -r '.[].files[].version' | uniq | grep -v -E 'go[0-9\.]+(beta|rc)' | sed -e 's/go//' | sort -V | tail -1)
+    go_version=$(curl -s 'https://go.dev/dl/?mode=json' | jq -r '.[].files[].version' | uniq | grep -v -E 'go[0-9\.]+(beta|rc)' | sed -e 's/go//' | sort -V | tail -1)
     go_tar="go$go_version.linux-amd64.tar.gz"
     cd /tmp
     wget "https://golang.org/dl/$go_tar"
@@ -96,10 +96,11 @@ ExecStart=/home/$VALIDATOR_USER/go/bin/cosmovisor start
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
-Environment="DAEMON_NAME=junod"
+Environment="DAEMON_NAME=$DAEMON_NAME"
 Environment="DAEMON_HOME=$DAEMON_HOME"
 Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
 Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
+Environment="UNSAFE_SKIP_BACKUP=true"
 
 [Install]
 WantedBy=multi-user.target

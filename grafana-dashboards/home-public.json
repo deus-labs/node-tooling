@@ -22,7 +22,7 @@
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
   "id": 22,
-  "iteration": 1638967731875,
+  "iteration": 1639386413395,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -121,7 +121,7 @@
             },
             {
               "props": {
-                "text": "body{\n    background: #780206;  /* fallback for old browsers */\n    background: -webkit-linear-gradient(to right, #061161, #780206);  /* Chrome 10-25, Safari 5.1-6 */\n    background: linear-gradient(to right, #061161, #780206); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n    \n.css-1hik5m6{\n    background: none !important;\n}\n\n.gf-form-label{\n    background-color: #22252b;\n}\n\n.gf-form-label--dashlink, .gf-form-label--variable {\n    background: transparent !important;\n}\n/* \n.gf-form-label{\n    font-size: 16px;\n} */\n\n.gf-form-label--variable{\n    color: #bbd2fe;\n}\n\n.css-mddp8{\n    background-color: transparent;\n}\n\n.dashboard-row--collapsed{\n    background: transparent;\n}"
+                "text": "body{\n    background: #780206;  /* fallback for old browsers */\n    background: -webkit-linear-gradient(to right, #061161, #780206);  /* Chrome 10-25, Safari 5.1-6 */\n    background: linear-gradient(to right, #061161, #780206); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n    \n.css-1hik5m6{\n    background: none !important;\n}\n\n.gf-form-label{\n    background-color: #22252b;\n}\n\n.gf-form-label--dashlink, .gf-form-label--variable {\n    background: transparent !important;\n}\n/* \n.gf-form-label{\n    font-size: 16px;\n} */\n\n.gf-form-label--variable{\n    color: #bbd2fe;\n}\n\n.css-mddp8{\n    background-color: transparent;\n}\n\n.dashboard-row--collapsed{\n    background: transparent;\n}\n.sidemenu{\n    background: transparent;\n}"
               },
               "type": "style"
             }
@@ -1295,7 +1295,7 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "juno-1",
           "value": "juno-1"
         },
@@ -1489,6 +1489,6 @@
   "timezone": "browser",
   "title": "Deus Monitor",
   "uid": "deus",
-  "version": 13,
+  "version": 14,
   "weekStart": ""
 }
