@@ -13,7 +13,7 @@ LATEST_BLOCK=$(junod status | jq -r '.SyncInfo.latest_block_height')
 EXPORT_FILENAME=export-"$CHAIN_ID"-"$LATEST_BLOCK".json
 
 systemctl stop cosmovisor 
-su "$USERNAME" -c "$(which "$DAEMON_NAME") export --home $DAEMON_HOME > $EXPORT_PATH/$EXPORT_FILENAME"
+su "$USERNAME" -c "$(which "$DAEMON_NAME") export --home $DAEMON_HOME > $EXPORT_PATH/$EXPORT_FILENAME 2>&1"
 systemctl start cosmovisor
 
 cd "$PARSER_PATH" && echo "$PARSER_COMMAND $EXPORT_PATH/$EXPORT_FILENAME" | sh
